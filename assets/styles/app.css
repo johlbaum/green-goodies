@@ -226,6 +226,37 @@ footer {
     margin-right: 90px;
 }
 
+/* Page - Show product */
+
+.detail-product {
+    display: flex;
+}
+
+.detail-product__image {
+    flex: 1;
+}
+
+.detail-product__image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.detail-product__text {
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-product__text-wrapper {
+    padding: 87px 120px;
+}
+
+.detail-product__title {
+    margin-bottom: 40px;
+}
+
 
 
 
