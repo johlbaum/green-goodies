@@ -1,4 +1,3 @@
-
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -23,3 +22,20 @@
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+# Ignore macOS specific files
+.DS_Store
+
+# Ignore Prettier configuration and ignore files
+.prettierignore
+.prettierrc.json
+
+# Ignore Visual Studio Code specific settings
+.vscode/
+
+# Ignore Node.js dependencies, except node_modules/
+/node_modules/*
+!/node_modules/
+
+# Ignore Yarn specific lock file
+!yarn.lock

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Bienvenu sur GreenGoodies
+{% endblock %}
+
+{% block body %}
+	<section class="banner">
+		<div class="banner__text">
+			<div class="banner_text_wrapper">
+				<h1 class="banner__title">Bienvenue</h1>
+				<p class="banner__description">Découvrez notre univers de produits durables et éthiques pour une consommation responsable. Retrouvez des articles d’hygiène & beauté, des accessoires & boissons et du prêt à porter.</p>
+			</div>
+		</div>
+		<div class="banner__image">
+			<img src="{{ asset('images/home_banner.png') }}" alt="Image d'un salon" class="banner__img">
+		</div>
+	</section>
+
+	<section class="products">
+		<h2 class="products__title">Nos Produits</h2>
+		<div class="products__content">
+			{% if products is empty %}
+				<p>Aucun produit disponible.</p>
+			{% else %}
+				{% for product in products %}
+					<div class="product">
+						<div class="product-img">
+							<img src="{{ product.picture }}" alt="{{ product.name }}">
+						</div>
+						<div class="product_content">
+							<h3 class="product__title">{{ product.name }}</h3>
+							<p class="product__short-description">{{ product.shortDescription }}</p>
+							<p class="product__price">{{ product.price }}€</p>
+							<a href="" class="product__link">Voir le produit</a>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</section>
+
+	<section class="about">
+		<div class="about__section about__conviction">
+			<div class="about__text">
+				<div class="about__text-wrapper">
+					<h2 class="about__title">NOTRE CONVICTION</h2>
+					<p class="about__description">
+						Chez GreenGoodies, nous croyons en un monde où le commerce peut être synonyme de bien-être pour la planète et ses habitants. Notre mission est de vous proposer une sélection rigoureuse de produits qui allient qualité, durabilité et éthique.
+					</p>
+				</div>
+			</div>
+			<div class="about__image">
+				<img src="{{ asset('images/home_about_1.png') }}" alt="">
+			</div>
+		</div>
+
+		<div class="about__section about__values">
+			<div class="about__image">
+				<img src="{{ asset('images/home_about_2.png') }}" alt="">
+			</div>
+			<div class="about__text">
+				<div class="about__text-wrapper">
+					<h2 class="about__title">NOS VALEURS</h2>
+					<p class="about__description">
+						Durabilité : Nous sélectionnons soigneusement des produits qui respectent l'environnement et favorisent la durabilité.<br>
+						Éthique : Nous nous engageons à travailler avec des partenaires et des fournisseurs qui partagent nos valeurs éthiques.<br>
+						Écologique : Nous encourageons des pratiques respectueuses de l’écosystème et privilégions les matériaux écologiques.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
