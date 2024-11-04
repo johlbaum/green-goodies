@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GreenGoodies - Connexion
+{% endblock %}
+
+{% block body %}
+	<section class="auth">
+		<div class="auth__image">
+			<img src="{{ asset('images/home_about_1.png') }}" alt="">
+		</div>
+		<div class="auth__form">
+			<div class="auth__form-wrapper">
+				<form method="post">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="mb-3">
+							You are logged in as
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Logout</a>
+						</div>
+					{% endif %}
+
+					<h1>Connexion</h1>
+					<label for="username">Adresse email</label>
+					<input type="email" value="{{ last_username }}" name="_username" id="username" class="form-control" autocomplete="email" required autofocus>
+					<label for="password">Mot de passe</label>
+					<input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+					<button class="btn btn-lg btn-primary" type="submit">
+						Se connecter
+					</button>
+				</form>
+				<p class="auth__redirect">
+					<a href="{{ path('app_register') }}">Pas encore de compte ? S’inscrire</a>
+				</p>
+			</p>
+		</p>
+	</div>
+</div></section>{% endblock %}

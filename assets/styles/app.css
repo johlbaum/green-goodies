@@ -15,13 +15,18 @@ html {
 
 .btn-primary {
     text-decoration: none;
-    width: 100%;
     display: block;
     background-color: #565656;
     color: #fff;
     text-align: center;
     padding: 30px 0;
     margin: 80px 0;
+    cursor: pointer;
+    border: none;
+}
+
+input:focus {
+    outline: none; 
 }
 
 /* Header */
@@ -33,6 +38,7 @@ header {
     padding: 31px 100px;
     background-color: #FFFDF7;
     border-bottom: 1px solid #F6F5F0;
+
 }
 
 .logo img {
@@ -236,7 +242,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 90px;
+    padding-right: 90px;
 }
 
 /* Page - Show product */
@@ -283,6 +289,85 @@ footer {
 .detail-product__description-word {
     padding-bottom: 10px;
     font-size: 0.7rem;
+}
+
+/* Auth page (login + signin) */
+
+.auth {
+    display: flex;
+}
+
+.auth__form-wrapper {
+    padding: 80px 100px;
+}
+
+.auth form {
+    display: flex;
+    flex-direction: column;
+    color: #666666;
+}
+
+.auth form h1 {
+    margin-bottom: 40px;
+    color: #333333;
+}
+
+.auth form input {
+    height: 67px;
+    border: 1px solid #666666;
+    margin-bottom: 30px;
+    padding-left: 15px;
+}
+
+.auth form label {
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+
+.auth__image {
+    flex: 1;
+}
+
+.auth__image img {
+    width: 100%;
+    height: 988px;
+    object-fit: cover;
+}
+
+.auth__form {
+    flex: 1;
+}
+
+.auth__redirect {
+    text-align: center;
+}
+
+.auth__redirect a {
+    font-size: 0.8rem;
+    color: #666666;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign__img {
+    height: 1104px!important;
+}
+
+.form-check {
+    flex-direction: row;
+    align-items: center;
+}
+
+#registration_form_agreeTerms {
+    margin-bottom: 0;
+    margin-right: 10px;
+}
+
+.form-check label {
+    margin-bottom: 0!important;
 }
 
 
