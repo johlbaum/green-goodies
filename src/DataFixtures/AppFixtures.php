@@ -22,18 +22,24 @@ class AppFixtures extends Fixture
         //Users
         $user = new User();
         $user->setEmail("user.one@greengoodies.com");
+        $user->setFirstName("User");
+        $user->setLastName("One");
         $user->setRoles(["ROLE_USER"]);
         $user->setPassword($this->userPasswordHasher->hashPassword($user, "password"));
         $manager->persist($user);
 
         $user = new User();
         $user->setEmail("user.two@greengoodies.com");
+        $user->setFirstName("User");
+        $user->setLastName("Two");
         $user->setRoles(["ROLE_USER"]);
         $user->setPassword($this->userPasswordHasher->hashPassword($user, "password"));
         $manager->persist($user);
 
         $user = new User();
         $user->setEmail("user.tree@greengoodies.com");
+        $user->setFirstName("User");
+        $user->setLastName("Tree");
         $user->setRoles(["ROLE_USER"]);
         $user->setPassword($this->userPasswordHasher->hashPassword($user, "password"));
         $manager->persist($user);
