@@ -5,10 +5,10 @@
 	<nav>
 		<ul>
 			<li>
-				<a href="">Nos produits</a>
+				<a href="{{ path('app_home') }}#products">Nos produits</a>
 			</li>
 			<li>
-				<a href="">Mon panier</a>
+				<a href="{{ path('app_cart_show') }}">Mon panier</a>
 			</li>
 			<li>
 				<a href="">Mon compte</a>
@@ -20,5 +20,6 @@
 					<a href="{{ path('app_login') }}">Connexion</a>
 				{% endif %}
 			</li>
-		</nav>
-	</header>
+		</ul>
+	</nav>
+</header>

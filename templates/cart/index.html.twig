@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier
+{% endblock %}
+
+{% block body %}
+	<section class="cart">
+		<div class="cart__wrapper">
+			<h2 class="cart__title">Mon panier</h2>
+			<a href="{{ path('app_cart_delete') }}" class="cart__empty-link">X Vider le panier</a>
+			<div class="cart__content">
+				{% if products is empty %}
+					<p class="cart__empty-message">Le panier est vide.</p>
+				{% else %}
+					{% for item in products %}
+						<div class="cart__item">
+							<div class="cart__item-image">
+								<img src="{{ item.product.picture }}" alt="{{ item.product.name }}">
+							</div>
+							<div class="cart__item-content">
+								<h3 class="cart__item-title">{{ item.product.name }}</h3>
+								<p class="cart__item-price">{{ item.product.price }}€</p>
+								<p class="cart__item-quantity">Quantité :
+									{{ item.quantity }}</p>
+							</div>
+						</div>
+					{% endfor %}
+					<div class="cart__total">
+						<div class="cart__total-wrapper">
+							<div class="cart__total-amount">
+								<p>Total panier :
+									{{ total }}
+									€
+								</p>
+								<p>Frais de livraison offert</p>
+							</div>
+						</div>
+					</div>
+					<a href="" class="cart__checkout-link">
+						<button class="cart__checkout-button btn-primary">Valider la commande</button>
+					</a>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+{% endblock %}
