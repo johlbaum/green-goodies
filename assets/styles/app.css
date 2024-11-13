@@ -6,11 +6,23 @@
     box-sizing: border-box;
 }
 
+/* Global */
+
 html {
     font-size: 16px; 
     font-family: "Inter", sans-serif;
     color: #333333;
     background-color: #FFFDF7;
+}
+
+html, body {
+    height: 100%; 
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1; 
 }
 
 .btn-primary {
@@ -20,13 +32,20 @@ html {
     color: #fff;
     text-align: center;
     padding: 30px 0;
-    margin: 80px 0;
     cursor: pointer;
     border: none;
 }
 
 input:focus {
     outline: none; 
+}
+
+.background-secondary {
+    background-color: #f7f1ec;
+}
+
+a {
+    text-decoration: none;
 }
 
 /* Header */
@@ -55,7 +74,6 @@ nav ul li {
 }
 
 nav ul li a {
-    text-decoration: none; 
     color: #333333; 
 }
 
@@ -157,7 +175,6 @@ nav ul li a {
 
 .product__link {
     color: #333;
-    text-decoration: none;
     padding: 23px 16px;
 }
 
@@ -249,6 +266,7 @@ footer {
 
 .detail-product {
     display: flex;
+    padding-bottom: 220px;
 }
 
 .detail-product__image {
@@ -270,7 +288,11 @@ footer {
 }
 
 .detail-product__text-wrapper {
-    padding: 87px 120px;
+    padding: 87px 120px 0 120px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .detail-product__title {
@@ -340,6 +362,7 @@ footer {
 
 .auth__redirect {
     text-align: center;
+    margin-top: 27px;
 }
 
 .auth__redirect a {
@@ -372,16 +395,13 @@ footer {
 
 /* Cart page */
 
-.cart {
-    background-color: #f7f1ec;
-}
-
 .cart__title {
     text-align: center;
     margin-bottom: 16px;
 }
 
 .cart__empty-link {
+    display: inline-block;
     margin-bottom: 17px;
     color: #666666;
     font-size: 0.8rem;
@@ -399,7 +419,7 @@ footer {
     width: 100%;
 }
 
-.cart__item {
+.cart__item-wrapper {
     display: flex;
     padding: 40px;
     background-color: #FFFDF7;
@@ -428,13 +448,117 @@ footer {
 .cart__content a {
     display: flex;
     justify-content: center;
-    text-decoration: none;
 }
 
 .cart__checkout-link button {
     margin-top: 30px;
     width: 70%;
 }
+
+.cart__quantity-wrapper {
+    padding: 60px 0;
+}
+
+.cart__quantity-wrapper label {
+    margin-right: 10px;
+    color: #666666;
+    font-weight: 400;
+}
+
+.cart__quantity-wrapper input {
+    width: 30px;
+}
+
+.detail-product__form-wrapper button {
+    width: 100%;
+}
+
+
+/* Account */
+
+.account__wrapper {
+    width: 50%;
+    margin: auto;
+    padding: 45px 0;
+}
+
+.account__title {
+    margin-bottom: 45px;
+    text-align: center;
+}
+
+.account__content-wrapper {
+    background-color: #FFFDF7;
+    padding: 60px;
+    margin-bottom: 15px;
+}
+
+.account__orders-title {
+    margin-bottom: 30px;
+}
+
+.account__orders-table {
+    width: 100%;
+}
+
+.account__orders-table {
+    width: 100%;
+    border-collapse: collapse; 
+}
+
+thead {
+    text-align: left;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid transparent; 
+}
+
+.account__table-header:nth-child(1), .account__order-id:nth-child(1) {
+    width: 30%;
+}
+
+.account__table-header:nth-child(2), .account__order-date:nth-child(2) {
+    width: 40%;
+}
+
+.account__table-header:nth-child(3), .account__order-total-amount:nth-child(3) {
+    width: 0%;
+}
+
+.account__orders-table tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #ccc; 
+}
+
+.account__orders-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.account__table-header, .account__order-id, .account__order-date, .account__order-total-amount {
+    line-height: 2.5; 
+}
+
+.account__table-header {
+    line-height: normal; 
+}
+
+.account__api-access-header {
+    margin-bottom: 30px;
+}
+
+.account__api-access-button button {
+    width: 100%;
+}
+
+.account__delete-button button {
+    width: 100%;
+}
+
+
+
+
+
 
 
 

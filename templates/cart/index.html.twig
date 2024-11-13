@@ -4,16 +4,17 @@
 {% endblock %}
 
 {% block body %}
-	<section class="cart">
+	<section class="background-secondary main-content">
 		<div class="cart__wrapper">
-			<h2 class="cart__title">Mon panier</h2>
+			<h1 class="cart__title">Mon panier</h1>
 			<a href="{{ path('app_cart_delete') }}" class="cart__empty-link">X Vider le panier</a>
-			<div class="cart__content">
+			<div class="cart__item">
 				{% if products is empty %}
 					<p class="cart__empty-message">Le panier est vide.</p>
 				{% else %}
 					{% for item in products %}
-						<div class="cart__item">
+
+						<div class="cart__item-wrapper">
 							<div class="cart__item-image">
 								<img src="{{ item.product.picture }}" alt="{{ item.product.name }}">
 							</div>
@@ -25,22 +26,24 @@
 							</div>
 						</div>
 					{% endfor %}
-					<div class="cart__total">
-						<div class="cart__total-wrapper">
-							<div class="cart__total-amount">
-								<p>Total panier :
-									{{ total }}
-									€
-								</p>
-								<p>Frais de livraison offert</p>
-							</div>
+				</div>
+				<div class="cart__total">
+					<div class="cart__total-wrapper">
+						<div class="cart__total-amount">
+							<p>Total panier :
+								{{ total }}
+								€
+							</p>
+							<p>Frais de livraison offert</p>
 						</div>
 					</div>
-					<a href="" class="cart__checkout-link">
+				</div>
+				<div class="cart__button">
+					<a href="{{ path('app_order_add') }}" class="cart__checkout-link">
 						<button class="cart__checkout-button btn-primary">Valider la commande</button>
 					</a>
-				{% endif %}
-			</div>
+				</div>
+			{% endif %}
 		</div>
 	</section>
 {% endblock %}

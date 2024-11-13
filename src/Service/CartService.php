@@ -22,15 +22,14 @@ class CartService
         // ou on renvoie un tableau vide si aucun produit n'a été ajouté au panier.
         $cart = $session->get('cart', []);
 
-        // Si la quantité est supérieure à 0, on ajoute l'ID du produit et la quantité associée au panier.
-        // Exemple : 
-        // $cart = [
-        //    123 => 2  // Ici, 123 est l'ID du produit et 2 est la quantité associée.
-        // ];
-        if ($quantity > 0) {
+        // Si le produit est déjà dans le panier, on ajoute la nouvelle quantité à l'existante.
+        if (isset($cart[$productId])) {
+            $cart[$productId] += $quantity;
+            // Si la quantité est supérieure à 0, on ajoute l'ID du produit et la quantité associée au panier.
+        } else if ($quantity > 0) {
             $cart[$productId] = $quantity;
-        } else {
             // Si la quantité est 0, on supprime le produit du panier.
+        } else {
             unset($cart[$productId]);
         }
 
@@ -43,6 +42,7 @@ class CartService
         $session = $request->getSession();
 
         $cart = $session->get('cart', []);
+
         $products = [];
 
         foreach ($cart as $productId => $quantity) {

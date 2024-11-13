@@ -7,12 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class CartController extends AbstractController
 {
     #[Route('/cart/add', name: 'app_cart_add')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function addToCart(Request $request, CartService $cartService): Response
     {
         $productId = (int) $request->request->get('product_id');
@@ -24,7 +22,6 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart/show', name: 'app_cart_show')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function showCart(Request $request, CartService $cartService): Response
     {
         // On récupère les produits du panier.
@@ -40,7 +37,6 @@ class CartController extends AbstractController
     }
 
     #[Route('/cart/delete', name: 'app_cart_delete')]
-    #[IsGranted('IS_AUTHENTICATED_FULLY')]
     public function deleteCart(Request $request): Response
     {
         $session = $request->getSession();
