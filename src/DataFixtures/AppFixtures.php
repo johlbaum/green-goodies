@@ -44,54 +44,78 @@ class AppFixtures extends Fixture
         $user->setPassword($this->userPasswordHasher->hashPassword($user, "password"));
         $manager->persist($user);
 
-        //Products
+        // Products
         $product1 = new Product();
-        $product1->setName('Savon bio');
-        $product1->setShortDescription('Savon naturel fait main');
-        $product1->setFullDescription('Ce savon bio est fabriqué à la main avec des ingrédients 100 % naturels. Il est doux pour la peau et convient à tous les types de peau, même les plus sensibles. Enrichi en huiles essentielles, il laisse une agréable odeur sur la peau. Optez pour un choix éthique et respectueux de l\'environnement.');
-        $product1->setPrice(5.99);
-        $product1->setPicture('https://cdn.shopify.com/s/files/1/2281/4553/files/SAVON_NATURE_3_480x480.jpg?v=1659358946');
+        $product1->setName('Kit d\'hygiène recyclable');
+        $product1->setShortDescription('Pour une salle de bain éco-friendly');
+        $product1->setFullDescription('Kit d\'hygiène 100% bio et recyclable, pour une salle de bain zéro déchet. Chaque élément est fabriqué à partir de matériaux naturels et durables, dans le respect de l\'environnement. Parfait pour une routine éthique et responsable, sans compromis sur la qualité. Tous les produits sont biodégradables et exempts de plastique. Un choix idéal pour réduire votre empreinte écologique au quotidien.');
+        $product1->setPrice(24.99);
+        $product1->setPicture('/images/products/kit-hygiene.webp');
         $manager->persist($product1);
 
         $product2 = new Product();
-        $product2->setName('Déodorant éthique');
-        $product2->setShortDescription('Déodorant sans aluminium');
-        $product2->setFullDescription('Ce déodorant naturel est formulé sans aluminium et sans produits chimiques agressifs. Il offre une protection efficace tout en respectant votre peau et l\'environnement. Avec des ingrédients biologiques, il vous laisse une sensation de fraîcheur tout au long de la journée. Faites le choix d\'un produit éthique et responsable.');
-        $product2->setPrice(7.50);
-        $product2->setPicture('https://www.comme-avant.bio/cdn/shop/products/deodorant-solide-au-beurre-de-cacao-version-3-deo-nat-solid-cacao-v3-comme-avant-440220_2048x.jpg?v=1689765117');
+        $product2->setName('Shot Tropical');
+        $product2->setShortDescription('Fruits frais, pressés à froid');
+        $product2->setFullDescription('Un mélange de fruits frais, issus de l\'agriculture biologique, pressés à froid pour préserver toutes leurs vitamines et antioxydants. Ce shot 100% naturel est une véritable cure de bien-être. Pas de conservateurs, pas de sucres ajoutés, seulement le meilleur de la nature. Un goût vibrant et énergisant, pour un mode de vie sain et durable.');
+        $product2->setPrice(4.50);
+        $product2->setPicture('/images/products/shot-tropical.webp');
         $manager->persist($product2);
 
         $product3 = new Product();
-        $product3->setName('Brosse à dents en bambou');
-        $product3->setShortDescription('Brosse à dents écologique');
-        $product3->setFullDescription('Cette brosse à dents en bambou est l\'alternative parfaite aux brosses en plastique. Elle est fabriquée à partir de bambou durable, ce qui en fait un choix respectueux de l\'environnement. Sa douceur permet un nettoyage efficace sans abîmer les gencives. En optant pour cette brosse à dents, vous contribuez à réduire les déchets plastiques.');
-        $product3->setPrice(3.50);
-        $product3->setPicture('https://m.media-amazon.com/images/I/51l5aQhODiL._AC_.jpg');
+        $product3->setName('Gourde en bois');
+        $product3->setShortDescription('50cl, bois d’olivier');
+        $product3->setFullDescription('Cette gourde est fabriquée à partir de bois d\'olivier durable, récolté de manière éthique et responsable. Elle est conçue pour durer et vous accompagner dans vos moments de détente ou vos activités sportives. Sa capacité de 50cl permet une hydratation optimale, tout en réduisant l\'utilisation de plastique. Un accessoire éco-responsable, alliant élégance et durabilité, pour ceux qui choisissent un mode de vie plus vert.');
+        $product3->setPrice(16.99);
+        $product3->setPicture('/images/products/gourde-bois.webp');
         $manager->persist($product3);
 
         $product4 = new Product();
-        $product4->setName('Bougie parfumée bio');
-        $product4->setShortDescription('Bougie naturelle');
-        $product4->setFullDescription('Cette bougie parfumée est fabriquée à la main avec de la cire naturelle et des huiles essentielles. Elle crée une ambiance chaleureuse et apaisante dans votre maison. En choisissant une bougie bio, vous évitez les produits chimiques nocifs pour votre santé et l\'environnement. Profitez d\'un moment de détente tout en respectant la planète.');
-        $product4->setPrice(12.00);
-        $product4->setPicture('https://www.ohme.shop/453-large_default/bougie-parfumee-apres-la-pluie-40h.webp');
+        $product4->setName('Disques Démaquillants x30');
+        $product4->setShortDescription('Solution efficace pour vous démaquiller en douceur');
+        $product4->setFullDescription('Ces disques démaquillants sont fabriqués à partir de coton bio, doux pour la peau et respectueux de l\'environnement. Lavables et réutilisables, ils offrent une alternative durable aux disques jetables. Un geste simple pour votre peau et la planète. Le coton bio est cultivé sans pesticides ni produits chimiques, pour un soin doux et éthique au quotidien.');
+        $product4->setPrice(9.99);
+        $product4->setPicture('/images/products/disques.webp');
         $manager->persist($product4);
 
         $product5 = new Product();
-        $product5->setName('Gourde réutilisable');
-        $product5->setShortDescription('Gourde en inox');
-        $product5->setFullDescription('Cette gourde en inox est parfaite pour les personnes soucieuses de l\'environnement. Elle est réutilisable et permet de réduire considérablement l\'utilisation de plastique à usage unique. Sa conception isotherme garde vos boissons chaudes ou froides pendant des heures. Emportez-la partout avec vous et faites un geste pour la planète.');
-        $product5->setPrice(19.99);
-        $product5->setPicture('https://shop-ta-gourde.com/cdn/shop/products/gourde-inox-bois_600x600.jpg?v=1597938736');
+        $product5->setName('Bougie Lavande & Patchouli');
+        $product5->setShortDescription('Cire naturelle');
+        $product5->setFullDescription('Bougie fabriquée à partir de cire naturelle, sans produits chimiques ni additifs nocifs. L\'association de lavande et patchouli crée une ambiance apaisante et relaxante, idéale pour la détente. La cire utilisée est biodégradable et provient de sources durables, respectant l\'environnement. Un produit éthique qui vous permet de profiter d\'un parfum agréable tout en réduisant votre empreinte écologique.');
+        $product5->setPrice(22);
+        $product5->setPicture('/images/products/bougies.webp');
         $manager->persist($product5);
 
         $product6 = new Product();
-        $product6->setName('Disques démaquillants lavables');
-        $product6->setShortDescription('Disques en coton bio');
-        $product6->setFullDescription('Ces disques démaquillants lavables sont fabriqués en coton bio, doux et respectueux de la peau. Ils remplacent les disques jetables et contribuent à réduire les déchets. Faciles à nettoyer, il vous suffit de les passer à la machine pour les réutiliser. Adoptez une routine beauté éco-responsable avec ces disques pratiques et durables.');
-        $product6->setPrice(10.00);
-        $product6->setPicture('https://tootopoids.com/wp-content/uploads/2018/09/Disques-d%C3%A9maquillant-lavable-chez-tootopoids.jpg');
+        $product6->setName('Brosse à dent');
+        $product6->setShortDescription('Bois de hêtre rouge issu de forêts gérées durablement');
+        $product6->setFullDescription('Cette brosse à dents est fabriquée à partir de bois de hêtre rouge, provenant de forêts gérées de manière durable. Son manche est biodégradable et son design simple permet une prise en main optimale. Les poils sont en nylon recyclable, sans BPA, pour une hygiène bucco-dentaire naturelle et respectueuse de l\'environnement. Un produit zéro déchet et éthique pour un soin de qualité.');
+        $product6->setPrice(5.40);
+        $product6->setPicture('/images/products/brosses.webp');
         $manager->persist($product6);
+
+        $product7 = new Product();
+        $product7->setName('Kit couvert en bois');
+        $product7->setShortDescription('Revêtement Bio en olivier & sac de transport');
+        $product7->setFullDescription('Ce kit de couverts en bois d\'olivier est idéal pour remplacer les ustensiles jetables. Conçu dans une démarche éco-responsable, chaque couvert est fabriqué à la main à partir de bois d\'olivier, un matériau durable et éthique. Il est livré avec un sac de transport en tissu bio, pour emporter vos couverts partout avec vous. Un choix parfait pour vos repas à emporter ou vos pique-niques.');
+        $product7->setPrice(12.30);
+        $product7->setPicture('/images/products/brosses.webp');
+        $manager->persist($product7);
+
+        $product8 = new Product();
+        $product8->setName('Nécessaire, déodorant Bio');
+        $product8->setShortDescription('50ml déodorant à l’eucalyptus');
+        $product8->setFullDescription('Déodorant bio à l\'eucalyptus, fabriqué avec des ingrédients naturels, certifiés biologiques. Il offre une protection longue durée tout en respectant votre peau et l\'environnement. Sa formulation sans aluminium, sans parabens et sans produits chimiques vous permet de prendre soin de vous de manière éthique. Le packaging est également recyclable, pour réduire l\'impact environnemental.');
+        $product8->setPrice(8.50);
+        $product8->setPicture('/images/products/deo.webp');
+        $manager->persist($product8);
+
+        $product9 = new Product();
+        $product9->setName('Savon Bio');
+        $product9->setShortDescription('Thé, Orange & Girofle');
+        $product9->setFullDescription('Ce savon bio est formulé à base de produits naturels, comme le thé, l\'orange et la girofle, pour un nettoyage doux et agréable. Tous les ingrédients sont issus de l\'agriculture biologique, garantissant un soin respectueux de la peau et de l\'environnement. Le savon est fabriqué sans parabens, sulfates ou produits chimiques, pour une expérience de soin pure et authentique. Un geste éthique au quotidien pour une peau propre et nourrie.');
+        $product9->setPrice(18.90);
+        $product9->setPicture('/images/products/savon.webp');
+        $manager->persist($product9);
 
         $manager->flush();
     }
