@@ -1,12 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Mon compte
+{% block title %}Mon compte - GreenGoodies
 {% endblock %}
 
 {% block body %}
 	<section class="background-secondary main-content">
 		<div class="account__wrapper">
 			<h2 class="account__title">Mon compte</h2>
+			{% for message in app.session.flashbag.get('success-api') %}
+				<div class="alert-success flash-message">
+					{{ message }}
+				</div>
+			{% endfor %}
 			<div class="account__order">
 				<div class="account__content-wrapper">
 					{% if orders is empty %}
@@ -25,8 +30,8 @@
 								{% for order in orders %}
 									<tr class="account__order-row">
 										<td class="account__order-id">{{ order.id }}</td>
-										<td class="account__order-date">{{ order.orderDate|date('m/d/Y') }}</td>
-										<td class="account__order-total-amount">{{ order.totalAmount }}</td>
+										<td class="account__order-date">{{ order.orderDate|date('d/m/Y') }}</td>
+										<td class="account__order-total-amount">{{ order.totalAmount }}€</td>
 									</tr>
 								{% endfor %}
 							</tbody>
@@ -39,18 +44,18 @@
 							<h3>Mon accès API</h3>
 						</div>
 						<div class="account__api-access-button">
-							<a href="">
-								<button class="btn-primary">Activer l'API</button>
-							</a>
+							{{ form_start(apiAccessForm, {'action': path('app_account_update_api_access')}) }}
+							{{ form_widget(apiAccessForm.submit) }}
+							{{ form_end(apiAccessForm) }}
 						</div>
 					</div>
 				</div>
 				<div class="account__content-wrapper">
 					<div class="account__delete-account-wrapper">
 						<div class="account__delete-button">
-							<form action="{{ path('app_account_delete') }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.')">
-								<button type="submit" class="btn-primary">Supprimer mon compte</button>
-							</form>
+							{{ form_start(deleteAccountForm, {'action': path('app_account_delete'),'attr': {'onsubmit': 'return confirm("Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.")'}}) }}
+							{{ form_widget(deleteAccountForm.submit) }}
+							{{ form_end(deleteAccountForm) }}
 						</div>
 					</div>
 				</div>

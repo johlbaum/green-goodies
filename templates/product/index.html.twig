@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Bienvenue sur GreenGoodies
+	GreenGoodies -
+	{{ product.name }}
 {% endblock %}
 
 {% block body %}
 	<section class="detail-product">
 		<div class="detail-product__image">
-			<img src="{{ product.picture }}" alt="{{ product.name }}">
+			<img src="{{ asset(product.picture) }}" alt="{{ product.name }}">
 		</div>
 		<div class="detail-product__text">
 			<div class="detail-product__text-wrapper">
@@ -19,20 +20,32 @@
 				</div>
 				<div class="detail-product__form-wrapper">
 					{% if app.user %}
-						<form action="{{ path('app_cart_add') }}" method="post">
-							<input type="hidden" name="product_id" value="{{ product.id }}">
-							<div class="cart__quantity-wrapper">
-								<label for="quantity">Quantité :</label>
-								<input type="number" id="quantity" name="quantity" value="{{ cart[product.id] ?? 1 }}" min="0">
-							</div>
-							<button type="submit" class="btn-primary">
-								{{ cart[product.id] is defined ? 'Mettre à jour' : 'Ajouter au panier' }}
-							</button>
-						</form>
+						{{ form_start(form) }}
+						<div class="cart__quantity-wrapper">
+							{{ form_row(form.quantity) }}
+						</div>
+						<button type="submit" class="btn btn-primary">
+							{% if isProductInCart %}
+								Mettre à jour
+							{% else %}
+								Ajouter au panier
+							{% endif %}
+						</button>
+						{{ form_end(form) }}
+					{% else %}
+						<a href="{{ path('app_login') }}" class="btn-primary">Se connecter pour ajouter le produit au panier</a>
+					{% endif %}
+				</div>
+				{% for message in app.session.flashbag.get('success-cart') %}
+					<div class="alert-success flash-message">
+						{{ message }}
 					</div>
-				{% else %}
-					<a href="{{ path('app_login') }}" class="btn-primary">Se connecter pour ajouter le produit au panier</a>
-				{% endif %}
+				{% endfor %}
+				{% for message in app.session.flashbag.get('error-cart') %}
+					<div class="alert-success flash-message">
+						{{ message }}
+					</div>
+				{% endfor %}
 			</div>
 		</div>
 	</section>

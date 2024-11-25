@@ -1,28 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Panier
+{% block title %}Mon panier - GreenGoodies
 {% endblock %}
 
 {% block body %}
 	<section class="background-secondary main-content">
 		<div class="cart__wrapper">
+			{% for message in app.session.flashbag.get('success-order') %}
+				<div class="alert-success flash-message">
+					{{ message }}
+				</div>
+			{% endfor %}
 			<h1 class="cart__title">Mon panier</h1>
-			<a href="{{ path('app_cart_delete') }}" class="cart__empty-link">X Vider le panier</a>
-			<div class="cart__item">
+			{% if products is not empty %}
+				<a href="{{ path('app_cart_delete') }}" class="cart__empty-link">X Vider le panier</a>
+			{% endif %}
+			<div class="cart__items">
 				{% if products is empty %}
-					<p class="cart__empty-message">Le panier est vide.</p>
+					<p class="cart__empty-message">Votre panier est vide.</p>
 				{% else %}
 					{% for item in products %}
-
 						<div class="cart__item-wrapper">
 							<div class="cart__item-image">
-								<img src="{{ item.product.picture }}" alt="{{ item.product.name }}">
+								<img src="{{ asset(item.product.picture) }}" alt="{{ item.product.name }}">
 							</div>
 							<div class="cart__item-content">
 								<h3 class="cart__item-title">{{ item.product.name }}</h3>
-								<p class="cart__item-price">{{ item.product.price }}€</p>
 								<p class="cart__item-quantity">Quantité :
-									{{ item.quantity }}</p>
+									{{ item.quantity }}
+								</p>
+								<p class="cart__item-price">{{ item.product.price }}€</p>
 							</div>
 						</div>
 					{% endfor %}
@@ -31,17 +38,16 @@
 					<div class="cart__total-wrapper">
 						<div class="cart__total-amount">
 							<p>Total panier :
-								{{ total }}
-								€
+								<span>{{ total|number_format(2, ',') }}€</span>
 							</p>
 							<p>Frais de livraison offert</p>
 						</div>
 					</div>
 				</div>
 				<div class="cart__button">
-					<a href="{{ path('app_order_add') }}" class="cart__checkout-link">
-						<button class="cart__checkout-button btn-primary">Valider la commande</button>
-					</a>
+					{{ form_start(orderForm, {'action': path('app_order_add')}) }}
+					{{ form_widget(orderForm.submit) }}
+					{{ form_end(orderForm) }}
 				</div>
 			{% endif %}
 		</div>
