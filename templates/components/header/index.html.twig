@@ -4,22 +4,33 @@
 	</a>
 	<nav>
 		<ul>
-			<li>
-				<a href="{{ path('app_home') }}#products">Nos produits</a>
-			</li>
-			<li>
-				<a href="{{ path('app_cart_show') }}">Mon panier</a>
-			</li>
-			<li>
-				<a href="{{ path('app_account_show') }}">Mon compte</a>
-			</li>
-			<li>
-				{% if app.user %}
+			{% if app.user %}
+				<li>
+					<a href="{{ path('app_home') }}#products">Nos produits</a>
+				</li>
+				<li>
+					<a href="{{ path('app_cart_show') }}" class="cart-count-wrapper">
+						Mon panier
+						{% set totalQuantity = cart_total_quantity() %}
+						{% if totalQuantity > 0 %}
+							<span class="cart-count">{{ totalQuantity }}</span>
+						{% endif %}
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('app_account_show') }}">Mon compte</a>
+				</li>
+				<li>
 					<a href="{{ path('app_logout') }}">Déconnexion</a>
-				{% else %}
+				</li>
+			{% else %}
+				<li>
 					<a href="{{ path('app_login') }}">Connexion</a>
-				{% endif %}
-			</li>
+				</li>
+				<li>
+					<a href="{{ path('app_register') }}">Inscription</a>
+				</li>
+			{% endif %}
 		</ul>
 	</nav>
 </header>
