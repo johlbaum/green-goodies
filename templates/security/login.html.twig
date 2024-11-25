@@ -6,20 +6,20 @@
 {% block body %}
 	<section class="auth">
 		<div class="auth__image">
-			<img src="{{ asset('images/home_about_1.png') }}" alt="">
+			<img src="{{ asset('images/home_about_1.webp') }}" alt="Image d'une branche">
 		</div>
 		<div class="auth__form">
 			<div class="auth__form-wrapper">
 				<form method="post">
 					{% if error %}
-						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+						<div class="alert alert-danger alert-login">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 					{% endif %}
 
 					{% if app.user %}
 						<div class="mb-3">
-							You are logged in as
+							Vous êtes connecté en tant que
 							{{ app.user.userIdentifier }},
-							<a href="{{ path('app_logout') }}">Logout</a>
+							<a href="{{ path('app_logout') }}">Se déconnecter</a>
 						</div>
 					{% endif %}
 
@@ -38,7 +38,7 @@
 				<p class="auth__redirect">
 					<a href="{{ path('app_register') }}">Pas encore de compte ? S’inscrire</a>
 				</p>
-			</p>
-		</p>
-	</div>
-</div></section>{% endblock %}
+			</div>
+		</div>
+	</section>
+{% endblock %}
