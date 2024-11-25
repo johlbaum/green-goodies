@@ -14,8 +14,6 @@ Le développement du site comprend deux aspects distincts :<br>
 
 Un bouton a été ajouté pour permettre à l'utilisateur d’activer son accès API depuis la gestion de son compte utilisateur.
 
----
-
 ## Spécifications techniques - API GreenGoodies :
 
 ### Routes :
@@ -28,8 +26,6 @@ Un bouton a été ajouté pour permettre à l'utilisateur d’activer son accès
 - **Identifiants corrects** : Statut **200**
 - **Identifiants incorrects** : Statut **401**
 - **Accès API non activé** : Statut **403**
-
----
 
 ## Données de test :
 
@@ -83,7 +79,7 @@ composer install
 
 ## 3. Configurer l’environnement
 
-Créez un fichier `.env.local` à la racine du projet avec les configurations suivantes :
+Créez un fichier `.env.local` à la racine du projet avec la configuration suivante :
 
 ```bash
 DATABASE_URL="mysql://<utilisateur>:<mot_de_passe>@127.0.0.1:3306/greengoodies?charset=utf8"
