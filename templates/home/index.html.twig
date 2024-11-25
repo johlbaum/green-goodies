@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-	Bienvenu sur GreenGoodies
+{% block title %}Bienvenue sur GreenGoodies
 {% endblock %}
 
 {% block body %}
@@ -13,7 +12,7 @@
 			</div>
 		</div>
 		<div class="banner__image">
-			<img src="{{ asset('images/home_banner.png') }}" alt="Image d'un salon" class="banner__img">
+			<img src="{{ asset('images/home_banner.webp') }}" alt="Image d'un salon" class="banner__img">
 		</div>
 	</section>
 
@@ -26,7 +25,7 @@
 				{% for product in products %}
 					<div class="product">
 						<div class="product-img">
-							<img src="{{ product.picture }}" alt="{{ product.name }}">
+							<img src="{{ asset(product.picture) }}" alt="{{ product.name }}">
 						</div>
 						<div class="product_content">
 							<h3 class="product__title">{{ product.name }}</h3>
@@ -51,13 +50,13 @@
 				</div>
 			</div>
 			<div class="about__image">
-				<img src="{{ asset('images/home_about_1.png') }}" alt="">
+				<img src="{{ asset('images/home_about_1.webp') }}" alt="Image d'une branche">
 			</div>
 		</div>
 
 		<div class="about__section about__values">
 			<div class="about__image">
-				<img src="{{ asset('images/home_about_2.png') }}" alt="">
+				<img src="{{ asset('images/home_about_2.webp') }}" alt="Image de sacs">
 			</div>
 			<div class="about__text">
 				<div class="about__text-wrapper">
@@ -71,5 +70,4 @@
 			</div>
 		</div>
 	</section>
-
 {% endblock %}
