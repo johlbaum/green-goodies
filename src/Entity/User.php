@@ -13,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet email')]
+#[UniqueEntity(fields: ['email'], message: 'Il existe déjà un compte avec cet email.')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -53,6 +53,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: 'user', orphanRemoval: true)]
     private Collection $orders;
+
+    #[ORM\Column]
+    private ?bool $apiAccessEnabled = false;
 
     public function __construct()
     {
@@ -108,6 +111,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
+    }
+
+    /**
+     * Méthode getUsername qui permet de retourner le champ qui est utilisé pour l'authentification.
+     *
+     * @return string
+     */
+    public function getUsername(): string
+    {
+        return $this->getUserIdentifier();
     }
 
     /**
@@ -184,6 +197,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $order->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isApiAccessEnabled(): ?bool
+    {
+        return $this->apiAccessEnabled;
+    }
+
+    public function setApiAccessEnabled(bool $apiAccessEnabled): static
+    {
+        $this->apiAccessEnabled = $apiAccessEnabled;
 
         return $this;
     }

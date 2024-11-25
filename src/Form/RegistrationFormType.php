@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class RegistrationFormType extends AbstractType
 {
@@ -30,10 +31,24 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'label' => 'Mot de passe',
                 'attr' => ['autocomplete' => 'new-password'],
+                'constraints' => [
+                    new Assert\NotBlank(['message' => 'Le mot de passe est obligatoire.']),
+                    new Assert\Length([
+                        'min' => 8,
+                        'minMessage' => 'Le mot de passe doit contenir au moins {{ limit }} caractères.',
+                    ]),
+                ]
             ])
             ->add('confirmPassword', PasswordType::class, [
                 'mapped' => false,
                 'label' => 'Confirmation mot de passe',
+                'constraints' => [
+                    new Assert\NotBlank(['message' => 'La confirmation du mot de passe est obligatoire.']),
+                    new Assert\EqualTo([
+                        'propertyPath' => 'parent.all[plainPassword].data', // On vérifie si confirmPassword est égal à plainPassword.
+                        'message' => 'Les mots de passe ne correspondent pas.',
+                    ])
+                ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'J’accepte les CGU de GreenGoodies',
