@@ -258,12 +258,18 @@ nav ul li a {
 /* Footer */
 
 footer {
-    height: 81px;
     background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     padding-right: 90px;
+}
+
+footer p {
+    height: 81px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 /* Page - Show product */
