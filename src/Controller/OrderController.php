@@ -34,6 +34,12 @@ class OrderController extends AbstractController
         $order->setOrderDate(new \DateTime());
         $order->setTotalAmount($total);
 
+        // On associe les produits à la commande.
+        foreach ($products as $cartItem) {
+            $product = $cartItem['product'];
+            $order->addProduct($product);
+        }
+
         // On génère le formulaire.
         $orderForm = $this->createForm(OrderType::class);
 
