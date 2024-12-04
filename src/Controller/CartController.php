@@ -37,10 +37,9 @@ class CartController extends AbstractController
      * Supprime le contenu du panier.
      */
     #[Route('/cart/delete', name: 'app_cart_delete')]
-    public function deleteCart(Request $request): Response
+    public function deleteCart(Request $request, CartService $cartService): Response
     {
-        $session = $request->getSession();
-        $session->remove('cart');
+        $cartService->clearCart($request);
 
         return $this->redirectToRoute('app_cart_show');
     }
