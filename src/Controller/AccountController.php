@@ -27,7 +27,7 @@ class AccountController extends AbstractController
         $orders = $user->getOrders();
 
         // On génère le formulaire d'activation de l'accès à l'API en lui passant en option la valeur initiale de l'input.
-        $apiAccessForm = $this->createForm(ApiAccessType::class, $user, [
+        $apiAccessForm = $this->createForm(ApiAccessType::class, options: [
             'is_enabled' => $user->isApiAccessEnabled(),
         ]);
 
@@ -51,11 +51,11 @@ class AccountController extends AbstractController
         // On génère le formulaire de suppression du compte de l'utilisateur. 
         $form = $this->createForm(DeleteAccountType::class);
 
-        // Les données envoyées via la requête HTTP sont récupérées et mappées sur les champs du formulaire.
+        // La requête HTTP est analysée pour déterminer si le formulaire a été soumis.
         $form->handleRequest($request);
 
-        // Validation de la soumission et des contraintes de validation du formulaire.
-        if ($form->isSubmitted() && $form->isValid()) {
+        // On traite la soumission du formulaire.
+        if ($form->isSubmitted()) {
 
             // On récupère l'utilisateur connecté.
             $user = $this->getUser();
@@ -86,13 +86,13 @@ class AccountController extends AbstractController
     {
 
         // On génère le formulaire d'activation de l'accès à l'API.
-        $form = $this->createForm(ApiAccessType::class, $this->getUser());
+        $form = $this->createForm(ApiAccessType::class);
 
-        // Les données envoyées via la requête HTTP sont récupérées et mappées sur les champs du formulaire.
+        // La requête HTTP est analysée pour déterminer si le formulaire a été soumis.
         $form->handleRequest($request);
 
-        // Validation de la soumission et des contraintes de validation du formulaire.
-        if ($form->isSubmitted() && $form->isValid()) {
+        // On traite la soumission du formulaire.
+        if ($form->isSubmitted()) {
 
             /**
              * @var App\Entity\User $user
