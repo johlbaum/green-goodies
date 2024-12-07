@@ -22,7 +22,7 @@ class ProductController extends AbstractController
         $products = $productRepository->findAll();
 
         // On sérialise les données des produits en JSON.
-        $jsonData = $serializer->serialize($products, 'json');
+        $jsonData = $serializer->serialize($products, 'json', ['groups' => ['getProducts']]);
 
         // On renvoie une réponse JSON contenant les produits sérialisés avec un statut HTTP 200.
         return new JsonResponse($jsonData, 200, [], true);
